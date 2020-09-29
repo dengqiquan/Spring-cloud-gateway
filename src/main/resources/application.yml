@@ -1,0 +1,41 @@
+server:
+  port: 9000
+spring:
+  application:
+    name: cloud-gateway-service
+  redis:
+    database: 0
+    host: 139.155.49.169 # 127.0.0.1
+    port: 6379 #6379  #16380#
+    password: deng@shu
+    timeout: 5000
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:9001/eureka/
+
+ignore:
+  request: /auth/login
+
+
+#spring cloud gateway log level
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
+
+# health check
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
